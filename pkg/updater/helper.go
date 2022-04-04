@@ -62,7 +62,9 @@ func WritePropertiesFile(fName string, config map[string]string) error {
 	for _, k := range keys {
 		content += fmt.Sprintf("%s=%s\n", k[2:], config[k])
 	}
-	os.WriteFile(fName, []byte(content), 0666)
+	if err := os.WriteFile(fName, []byte(content), 0666); err != nil {
+		return err
+	}
 	return nil
 }
 
