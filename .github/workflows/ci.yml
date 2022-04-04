@@ -22,6 +22,7 @@ jobs:
           go-version: 1.17
       - run: go build ./cmd/files-updater-gradle/
   release:
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: build
     steps:
