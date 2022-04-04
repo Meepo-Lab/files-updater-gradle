@@ -43,6 +43,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           ghr: true
+          changelog-generator-opt: "emojis=true"
       - run: |
           gox -parallel 4 -osarch="linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 linux/arm windows/amd64" -ldflags="-extldflags '-static' -s -w -X github.com/ted-vo/files-updater-gradle/pkg/updater.FUVERSION=${{steps.semrel.outputs.version}}" -output="bin/{{.Dir}}_v${{steps.semrel.outputs.version}}_{{.OS}}_{{.Arch}}" ./cmd/files-updater-gradle/
           cd bin/ && shasum -a 256 * > ./files-updater-gradle_v${{steps.semrel.outputs.version}}_checksums.txt && cd -
