@@ -8,6 +8,20 @@ The npm files updater for [go-semantic-release](https://github.com/go-semantic-r
 
 Plugin update version in `grade.properties`
 
+## Usage
+
+``` json
+{
+  "plugins": {
+    "files-updater": {
+      "names": ["gradle"]
+    }
+  }
+}
+```
+
+Use this plugin by enabling it via `--update gradle.properties` for the version update file.
+
 ## Licence
 
 The [MIT License (MIT)](http://opensource.org/licenses/MIT)
