@@ -4,7 +4,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/ted-vo/files-updater-gradle)](https://goreportcard.com/report/github.com/ted-vo/files-updater-gradle)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ted-vo/files-updater-gradle)](https://pkg.go.dev/github.com/ted-vo/files-updater-gradle)
 
-The npm files updater for [go-semantic-release](https://github.com/go-semantic-release/semantic-release).
+The gradle files updater for [go-semantic-release](https://github.com/go-semantic-release/semantic-release).
 
 Plugin update version in `grade.properties`
 
