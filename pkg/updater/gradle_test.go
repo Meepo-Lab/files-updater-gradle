@@ -10,8 +10,8 @@ func TestGradleUpdater(t *testing.T) {
 	require := require.New(t)
 	updater := &Updater{}
 
-	defaultVer := "0.0.0"
-	nVer := "1.2.3"
+	defaultVer := "1.0.0-SNAPSHOT.8"
+	nVer := "1.0.0-SNAPSHOT.9"
 	gradlePropertiesPath := "../../test/gradle.properties"
 
 	err := updater.Apply(gradlePropertiesPath, nVer)

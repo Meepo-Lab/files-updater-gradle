@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./scripts/build
+
+cp -R .semrel/$(go env GOOS)_$(go env GOARCH)/files-updater-gradle /Users/V9N/Workspaces/vn.meepo/user-service/.semrel/$(go env GOOS)_$(go env GOARCH)
