@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/apex/log"
-	"github.com/go-semantic-release/semantic-release/v2/pkg/plugin"
-	"github.com/go-semantic-release/semantic-release/v2/pkg/updater"
 	gradleUpdater "github.com/ted-vo/file-updater-gradle/pkg/updater"
+	"github.com/ted-vo/semantic-release/v3/pkg/plugin"
+	"github.com/ted-vo/semantic-release/v3/pkg/updater"
 )
 
 func main() {
