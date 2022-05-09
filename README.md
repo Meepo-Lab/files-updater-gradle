@@ -1,6 +1,6 @@
 # :open_file_folder: file-updater-gradle
 
-[![CI](https://github.com/ted-vo/files-updater-gradle/workflows/CI/badge.svg?branch=main)](https://github.com/ted-vo/files-updater-gradle/actions?query=workflow%3ACI+branch%3Amaster)
+[![CI](https://github.com/ted-vo/files-updater-gradle/workflows/CI/badge.svg?branch=main)](https://github.com/ted-vo/files-updater-gradle/actions?query=workflow%3ACI+branch%main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ted-vo/files-updater-gradle)](https://goreportcard.com/report/github.com/ted-vo/files-updater-gradle)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ted-vo/files-updater-gradle)](https://pkg.go.dev/github.com/ted-vo/files-updater-gradle)
 
