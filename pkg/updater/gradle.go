@@ -7,6 +7,7 @@ import (
 	"github.com/apex/log"
 )
 
+var NAME = "Updater Gradle"
 var FUVERSION = "dev"
 
 type Updater struct {
@@ -17,7 +18,7 @@ func (u *Updater) Init(m map[string]string) error {
 }
 
 func (u *Updater) Name() string {
-	return "gradle"
+	return NAME
 }
 
 func (u *Updater) Version() string {
