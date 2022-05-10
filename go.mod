@@ -1,4 +1,4 @@
-module github.com/ted-vo/file-updater-gradle
+module github.com/ted-vo/files-updater-gradle
 
 go 1.17
 

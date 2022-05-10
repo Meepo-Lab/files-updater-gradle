@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/apex/log"
-	gradleUpdater "github.com/ted-vo/file-updater-gradle/pkg/updater"
+	gradleUpdater "github.com/ted-vo/files-updater-gradle/pkg/updater"
 	"github.com/ted-vo/semantic-release/v3/pkg/plugin"
 	"github.com/ted-vo/semantic-release/v3/pkg/updater"
 )
