@@ -11,9 +11,16 @@ var NAME = "Updater Gradle"
 var FUVERSION = "dev"
 
 type Updater struct {
+	VersionKey string
 }
 
 func (u *Updater) Init(m map[string]string) error {
+	log.Infof("Init %v", m)
+	vKey := m["version-key"]
+	if len(vKey) == 0 {
+		vKey = "version"
+	}
+	u.VersionKey = vKey
 	return nil
 }
 
@@ -37,7 +44,7 @@ func (u *Updater) Apply(file, newVersion string) error {
 	}
 
 	for k, v := range config {
-		if equal := strings.Index(k, "version"); equal >= 0 {
+		if equal := strings.Index(k, u.VersionKey); equal >= 0 {
 			if v != newVersion {
 				config[k] = newVersion
 			}
