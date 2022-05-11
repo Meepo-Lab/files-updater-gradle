@@ -8,7 +8,9 @@ import (
 
 func TestGradleUpdater(t *testing.T) {
 	require := require.New(t)
-	updater := &Updater{}
+	updater := &Updater{
+		VersionKey: "version",
+	}
 
 	defaultVer := "1.0.0-SNAPSHOT.8"
 	nVer := "1.0.0-SNAPSHOT.9"
