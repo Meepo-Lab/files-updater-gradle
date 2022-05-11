@@ -10,6 +10,19 @@ Plugin update version in `grade.properties`
 
 ## Usage
 
+Enable `--update` in your command line with value is path to your version files.
+> Recommand at root of your project dir
+
+e.g:
+
+``` bash
+./semantic-release \
+      ...
+      --update gradle.properties
+```
+
+And with config
+
 In `.semrelrc`
 
 ``` json
@@ -26,13 +39,16 @@ In `.semrelrc`
 }
 ```
 
+OR
+
 In `command line`
 
 ``` bash
 ./semantic-release \
       --files-updater gradle \
       --files-updater-opt message="ci(release):" \
-      --files-updater-opt version-key="customize-version-key-in-your-files"
+      --files-updater-opt version-key="customize-version-key-in-your-files" \
+      --update gradle.properties
 ```
 
 | options	|  e.g	| description |
