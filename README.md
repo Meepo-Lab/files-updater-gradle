@@ -4,20 +4,50 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/ted-vo/files-updater-gradle)](https://goreportcard.com/report/github.com/ted-vo/files-updater-gradle)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ted-vo/files-updater-gradle)](https://pkg.go.dev/github.com/ted-vo/files-updater-gradle)
 
-The gradle files updater for [go-semantic-release](https://github.com/go-semantic-release/semantic-release).
+The gradle files updater for [semantic-release](https://github.com/ted-vo/semantic-release).
 
 Plugin update version in `grade.properties`
 
 ## Usage
+
+In `.semrelrc`
 
 ``` json
 {
   "plugins": {
     "files-updater": {
       "names": ["gradle"]
+      "options": {
+        "message": "ci(release):"
+        "version-key": "customize-version-key-in-your-files"
+      }
     }
   }
 }
+```
+
+In `command line`
+
+``` bash
+./semantic-release \
+      --files-updater gradle \
+      --files-updater-opt message="ci(release):" \
+      --files-updater-opt version-key="customize-version-key-in-your-files"
+```
+
+| options	|  e.g	| description |
+|---	    |---	  |---	        |
+| `message`	| "ci(release): v1.0.0-SNAPSHOT.1" | prefix message commit with new version release  	|
+| `version-key`	| customize-version-key-in-your-files | customize your key version in your gradle.properties files |
+
+e.g:
+``` gradle
+org.gradle.parallel=true
+org.gradle.jvmargs=-Xmx3000m
+gRPCspringBootVersion=2.13.0.RELEASE
+javaxValidationVersion=2.0.1.Final
+version=1.0.0-SNAPSHOT.1
+customize-version-key-in-your-files=1.0.0-CUSTOMIZE.1
 ```
 
 Use this plugin by enabling it via `--update gradle.properties` for the version update file.
