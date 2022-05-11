@@ -44,7 +44,8 @@ func (u *Updater) Apply(file, newVersion string) error {
 	}
 
 	for k, v := range config {
-		if equal := strings.Index(k, u.VersionKey); equal >= 0 {
+		originalKey := k[strings.Index(k, ";")+1:]
+		if originalKey == u.VersionKey {
 			if v != newVersion {
 				config[k] = newVersion
 			}
