@@ -12,6 +12,8 @@ var FUVERSION = "dev"
 
 type Updater struct {
 	VersionKey string
+	TrimTag    string
+	NewVersion string
 }
 
 func (u *Updater) Init(m map[string]string) error {
@@ -21,6 +23,7 @@ func (u *Updater) Init(m map[string]string) error {
 		vKey = "version"
 	}
 	u.VersionKey = vKey
+	u.TrimTag = m["trim-tag"]
 	return nil
 }
 
@@ -38,6 +41,12 @@ func (u *Updater) ForFiles() string {
 
 func (u *Updater) Apply(file, newVersion string) error {
 	log.Infof(fmt.Sprintf("file=%s, newVersion=%s", file, newVersion))
+
+	u.NewVersion = newVersion
+	if len(u.TrimTag) != 0 {
+		u.NewVersion = newVersion[:len(u.TrimTag)]
+	}
+
 	config, err := ReadPropertiesFile(file, true)
 	if err != nil {
 		return err
@@ -46,8 +55,8 @@ func (u *Updater) Apply(file, newVersion string) error {
 	for k, v := range config {
 		originalKey := k[strings.Index(k, ";")+1:]
 		if originalKey == u.VersionKey {
-			if v != newVersion {
-				config[k] = newVersion
+			if v != u.NewVersion {
+				config[k] = u.NewVersion
 			}
 			break
 		}
