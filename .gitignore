@@ -2,3 +2,4 @@
 .semrel/
 scripts/test
 .dccache
+.DS_Store
