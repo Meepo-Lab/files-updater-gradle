@@ -33,10 +33,11 @@ func TestWithTrimTagGradleUpdater(t *testing.T) {
 	require := require.New(t)
 	updater := &Updater{
 		VersionKey: "version",
-		TrimTag:    "-SNAPSHOT",
+		TrimTag:    "-COMMONS",
 	}
 
-	nVer := "1.0.0-SNAPSHOT.298"
+	defaultVer := "1.0.0-COMMONS-SNAPSHOT.41"
+	nVer := "1.0.0-SNAPSHOT.42"
 	gradlePropertiesPath := "../../test/gradle.properties"
 
 	err := updater.Apply(gradlePropertiesPath, nVer)
@@ -46,7 +47,6 @@ func TestWithTrimTagGradleUpdater(t *testing.T) {
 	require.NoError(err)
 	require.Equal(nVer, config["version"], nVer)
 
-	defaultVer := "1.0.0-SWAGGERLOADER-SNAPSHOT.297"
 	updater.TrimTag = ""
 	err2 := updater.Apply(gradlePropertiesPath, defaultVer)
 	require.NoError(err2)

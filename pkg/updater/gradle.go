@@ -40,11 +40,11 @@ func (u *Updater) ForFiles() string {
 }
 
 func (u *Updater) Apply(file, newVersion string) error {
-	log.Infof(fmt.Sprintf("file=%s, newVersion=%s", file, newVersion))
+	log.Infof(fmt.Sprintf("file=%s, newVersion=%s, trimTag=%s", file, newVersion, u.TrimTag))
 
 	u.NewVersion = newVersion
 	if len(u.TrimTag) != 0 {
-		u.NewVersion = strings.Trim(newVersion, u.TrimTag)
+		u.NewVersion = strings.ReplaceAll(newVersion, u.TrimTag, "")
 	}
 
 	config, err := ReadPropertiesFile(file, true)
