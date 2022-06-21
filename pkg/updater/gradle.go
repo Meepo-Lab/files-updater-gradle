@@ -44,7 +44,7 @@ func (u *Updater) Apply(file, newVersion string) error {
 
 	u.NewVersion = newVersion
 	if len(u.TrimTag) != 0 {
-		u.NewVersion = newVersion[:len(u.TrimTag)]
+		u.NewVersion = strings.Trim(newVersion, u.TrimTag)
 	}
 
 	config, err := ReadPropertiesFile(file, true)
