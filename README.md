@@ -48,6 +48,7 @@ In `command line`
       --files-updater gradle \
       --files-updater-opt message="ci(release):" \
       --files-updater-opt version-key="customize-version-key-in-your-files" \
+      --files-updater-opt trim-tag="text-will-be-trim-before-replace" \
       --update gradle.properties
 ```
 
@@ -55,6 +56,7 @@ In `command line`
 |---	    |---	  |---	        |
 | `message`	| "ci(release): v1.0.0-SNAPSHOT.1" | prefix message commit with new version release  	|
 | `version-key`	| customize-version-key-in-your-files | customize your key version in your gradle.properties files |
+| `trim-tag`	| text will be trimed before replace to `gradle.properties` files | option to trim some prefix |
 
 e.g:
 ``` gradle
