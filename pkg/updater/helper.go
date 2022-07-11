@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"sort"
 	"strconv"
 	"strings"
@@ -15,11 +16,12 @@ type AppConfigProperties map[string]string
 func ReadPropertiesFile(fName string, order bool) (AppConfigProperties, error) {
 	config := AppConfigProperties{}
 
-	if _, err := os.Stat(fName); err != nil {
+	filePath := path.Join(path.Dir(fName), "gradle.properties")
+	if _, err := os.Stat(filePath); err != nil {
 		return config, fmt.Errorf(fmt.Sprintf("'%s' file does not exist", fName))
 	}
 
-	file, err := os.OpenFile(fName, os.O_RDWR, 0)
+	file, err := os.OpenFile(filePath, os.O_RDWR, 0)
 	if err != nil {
 		return config, err
 	}
@@ -50,7 +52,8 @@ func ReadPropertiesFile(fName string, order bool) (AppConfigProperties, error) {
 }
 
 func WritePropertiesFile(fName string, config map[string]string) error {
-	if _, err := os.Stat(fName); err != nil {
+	filePath := path.Join(path.Dir(fName), "gradle.properties")
+	if _, err := os.Stat(filePath); err != nil {
 		return fmt.Errorf(fmt.Sprintf("'%s' file does not exist", fName))
 	}
 
@@ -76,7 +79,7 @@ func WritePropertiesFile(fName string, config map[string]string) error {
 		key := mapSortKey[k]
 		content += fmt.Sprintf("%s=%s\n", key, config[fmt.Sprintf("%d;%s", k, key)])
 	}
-	if err := os.WriteFile(fName, []byte(content), 0666); err != nil {
+	if err := os.WriteFile(filePath, []byte(content), 0666); err != nil {
 		return err
 	}
 	return nil

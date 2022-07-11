@@ -6,6 +6,13 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestReadProperties(t *testing.T) {
+	require := require.New(t)
+	gradlePropertiesPath := "../../test/gradle.properties"
+	_, err := ReadPropertiesFile(gradlePropertiesPath, false)
+	require.NoError(err)
+}
+
 func TestGradleUpdater(t *testing.T) {
 	require := require.New(t)
 	updater := &Updater{
