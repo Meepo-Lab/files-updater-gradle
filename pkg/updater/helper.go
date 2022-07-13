@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"path"
-	"strings"
 
 	"github.com/magiconair/properties"
 )
@@ -26,20 +25,11 @@ func WritePropertiesFile(fName string, p *properties.Properties) error {
 	}
 
 	buf := new(bytes.Buffer)
-	p.Write(buf, properties.UTF8)
-	if err := os.WriteFile(filePath, []byte(buf.String()), 0666); err != nil {
+	if _, err := p.Write(buf, properties.UTF8); err != nil {
+		return err
+	}
+	if err := os.WriteFile(filePath, buf.Bytes(), 0666); err != nil {
 		return err
 	}
 	return nil
-}
-
-func propertyOf(str string) (key, val string, err error) {
-	fmt.Println(str)
-	split := strings.Split(str, "=")
-	if len(split) != 2 {
-		return "", "", fmt.Errorf(fmt.Sprintf("string '%s' can not be read as property.", str))
-	}
-	fmt.Println(fmt.Sprintf("k=%s,v=%s", split[0], split[1]))
-	fmt.Println("")
-	return split[0], split[1], nil
 }
