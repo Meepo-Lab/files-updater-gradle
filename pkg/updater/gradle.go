@@ -52,7 +52,7 @@ func (u *Updater) Apply(file, newVersion string) error {
 		return err
 	}
 
-	p.SetValue(u.VersionKey, u.NewVersion)
+	p.MustSet(u.VersionKey, u.NewVersion)
 	if err := WritePropertiesFile(file, p); err != nil {
 		return err
 	}
