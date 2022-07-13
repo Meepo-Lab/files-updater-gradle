@@ -47,22 +47,13 @@ func (u *Updater) Apply(file, newVersion string) error {
 		u.NewVersion = strings.ReplaceAll(newVersion, u.TrimTag, "")
 	}
 
-	config, err := ReadPropertiesFile(file, true)
+	p, err := ReadPropertiesFile(file)
 	if err != nil {
 		return err
 	}
 
-	for k, v := range config {
-		originalKey := k[strings.Index(k, ";")+1:]
-		if originalKey == u.VersionKey {
-			if v != u.NewVersion {
-				config[k] = u.NewVersion
-			}
-			break
-		}
-	}
-
-	if err := WritePropertiesFile(file, config); err != nil {
+	p.SetValue(u.VersionKey, u.NewVersion)
+	if err := WritePropertiesFile(file, p); err != nil {
 		return err
 	}
 	return nil
